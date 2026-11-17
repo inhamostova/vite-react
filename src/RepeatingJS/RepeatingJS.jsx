@@ -20,7 +20,6 @@ export const RepeatingJS = () => {
   //     }
   //     return max;
   //   };
-
   //   const reverseString = (str) => {
   //     let reverseStr = "";
   //     for (let i = str.length - 1; i >= 0; i -= 1) {
@@ -28,11 +27,9 @@ export const RepeatingJS = () => {
   //     }
   //     return reverseStr;
   //   };
-
   //   console.log(reverseString("hello")); // "olleh"
   //   console.log(reverseString("JavaScript")); // "tpircSavaJ"
   //   console.log(reverseString("12345")); // "54321"
-
   //   function countVowels(str) {
   //     const VOWELS = ["a", "e", "i", "o", "u"];
   //     let total = 0;
@@ -43,12 +40,10 @@ export const RepeatingJS = () => {
   //     }
   //     return total;
   //   }
-
   //   console.log(countVowels("hello")); // 2
   //   console.log(countVowels("JavaScript")); // 3
   //   console.log(countVowels("AEIOU")); // 5
   //   console.log(countVowels("rhythm"));
-
   //   function removeDuplicates(arr) {
   //     const newArr = [];
   //     for (const item of arr) {
@@ -58,16 +53,12 @@ export const RepeatingJS = () => {
   //     }
   //     return newArr;
   //   }
-
   //   console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
   //   // [1, 2, 3, 4]
-
   //   console.log(removeDuplicates(["a", "b", "a", "c"]));
   //   // ["a", "b", "c"]
-
   //   console.log(removeDuplicates([5, 5, 5, 5]));
   //   // [5]
-
   //   function findDuplicates(arr) {
   //     const newArr = [];
   //     for (let i = 0; i < arr.length; i += 1) {
@@ -77,17 +68,13 @@ export const RepeatingJS = () => {
   //     }
   //     return newArr;
   //   }
-
   //   console.log(findDuplicates([1, 2, 3, 2, 4, 1]));
   //   // [1, 2]
-
   //   console.log(findDuplicates(["a", "b", "c", "a", "b"]));
   //   // ["a", "b"]
-
   //   console.log(findDuplicates([1, 2, 3, 4]));
   //   // []
   //   console.log(findDuplicates([1, 1, 1, 1]));
-
   //   function findSecondLargest(arr) {
   //     let max = arr[0];
   //     for (let i = 0; i < arr.length; i += 1) {
@@ -95,14 +82,12 @@ export const RepeatingJS = () => {
   //         max = arr[i];
   //       }
   //     }
-
   //     for (let i = 0; i < arr.length; i += 1) {
   //       if (arr[i] === max) {
   //         arr.splice(i, 1);
   //         i -= 1;
   //       }
   //     }
-
   //     let secondMax = arr[0];
   //     for (const item of arr) {
   //       if (secondMax < item) {
@@ -111,30 +96,123 @@ export const RepeatingJS = () => {
   //     }
   //     return secondMax;
   //   }
+  //   function findSecondLargest(arr) {
+  //     let max = arr[0];
+  //     let secondMax;
+  //     for (let i = 1; i < arr.length; i += 1) {
+  //       if (arr[i] > max) {
+  //         secondMax = max;
+  //         max = arr[i];
+  //       }
+  //       if ((arr[i] > secondMax || secondMax === undefined) && arr[i] < max) {
+  //         secondMax = arr[i];
+  //       }
+  //     }
+  //     return secondMax;
+  //   }
+  //   console.log(findSecondLargest([10, 5, 8, 20, 15])); // 15
+  //   console.log(findSecondLargest([1, 2, 3, 4, 5])); // 4
+  //   console.log(findSecondLargest([-10, -5, -20])); // -10
+  //   console.log(findSecondLargest([5, 5, 5, 4])); // 4
+  //   console.log(findSecondLargest([-10, 0, -5]));
+  //   function countOccurrences(arr) {
+  //     const obj = {};
+  //     for (let i = 0; i < arr.length; i += 1) {
+  //       obj[arr[i]] = (obj[arr[i]] ?? 0) + 1;
+  //     }
+  //     return obj;
+  //   }
+  //   countOccurrences([1, 2, 2, 3, 3, 3]);
+  //   // { 1: 1, 2: 2, 3: 3 }
+  //   countOccurrences(["a", "b", "a", "c", "b", "a"]);
+  //   // { a: 3, b: 2, c: 1 }
+  //   countOccurrences([5, 5, 5, 5]);
+  //   // { 5: 4 }
+  //   countOccurrences([]);
+  //   function firstNonRepeatingChar(str) {
+  //     const obj = {};
+  //     for (let i = 0; i < str.length; i += 1) {
+  //       obj[str[i]] = (obj[str[i]] ?? 0) + 1;
+  //     }
+  //     for (const key in obj) {
+  //       if (obj[key] === 1) {
+  //         return key;
+  //       }
+  //     }
+  //     return null;
+  //   }
+  //   console.log(firstNonRepeatingChar("aabbcdd")); // "c"
+  //   console.log(firstNonRepeatingChar("hello")); // "h"
+  //   console.log(firstNonRepeatingChar("aabbcc")); // null
+  //   console.log(firstNonRepeatingChar("swiss")); // "w"
+  //   function areAnagrams(str1, str2) {
+  //     const obj1 = {};
+  //     const obj2 = {};
+  //     if (str1.length !== str2.length) {
+  //       return false;
+  //     }
+  //     for (let i = 0; i < str1.length; i += 1) {
+  //       obj1[str1[i]] = (obj1[str1[i]] ?? 0) + 1;
+  //       obj2[str2[i]] = (obj2[str2[i]] ?? 0) + 1;
+  //     }
+  //     for (const key in obj1) {
+  //       if (obj2[key] === obj1[key]) {
+  //         continue;
+  //       } else {
+  //         return false;
+  //       }
+  //     }
+  //     return true;
+  //   }
+  //   console.log(areAnagrams("listen", "silent")); // true
+  //   console.log(areAnagrams("hello", "world")); // false
+  //   console.log(areAnagrams("anagram", "nagaram")); // true
+  //   console.log(areAnagrams("rat", "car")); // false
+  //   console.log(areAnagrams("ab", "abc")); // false
+  //   console.log(areAnagrams("aab", "abb")); // false
+  //   console.log(areAnagrams("", ""));
 
-  function findSecondLargest(arr) {
-    let max = arr[0];
-    let secondMax;
+  //   function findMissingNumber(arr) {
+  //     const sum = (arr.length * (arr.length + 1)) / 2;
 
-    for (let i = 1; i < arr.length; i += 1) {
-      if (arr[i] > max) {
-        secondMax = max;
-        max = arr[i];
+  //     const total = arr.reduce((acc, item) => acc + item, 0);
+
+  //     return sum - total;
+  //   }
+
+  //   console.log(findMissingNumber([3, 0, 1])); // 2
+
+  //   console.log(findMissingNumber([0, 1])); // 2
+
+  //   console.log(findMissingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
+
+  //   console.log(findMissingNumber([0])); // 1
+
+  function twoSum(arr, target) {
+    // for (let i = 0; i < arr.length; i += 1) {
+    //   for (let j = i + 1; j < arr.length; j += 1) {
+    //     if (arr[i] + arr[j] === target) {
+    //       return [i, j];
+    //     }
+    //   }
+    // }
+    const map = new Map();
+
+    for (let i = 0; i < arr.length; i += 1) {
+      if (map.has(target - arr[i])) {
+        return [map.get(target - arr[i]), i];
       }
-      if ((arr[i] > secondMax || secondMax === undefined) && arr[i] < max) {
-        secondMax = arr[i];
-      }
+      map.set(arr[i], i);
     }
-    return secondMax;
   }
 
-  console.log(findSecondLargest([10, 5, 8, 20, 15])); // 15
+  console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
 
-  console.log(findSecondLargest([1, 2, 3, 4, 5])); // 4
+  console.log(twoSum([3, 2, 4], 6)); // [1, 2]
 
-  console.log(findSecondLargest([-10, -5, -20])); // -10
+  console.log(twoSum([3, 3], 6)); // [0, 1]
 
-  console.log(findSecondLargest([5, 5, 5, 4])); // 4
+  console.log(twoSum([4, 1, 8, 3], 7)); //[0,3]
 
-  console.log(findSecondLargest([-10, 0, -5]));
+  console.log(twoSum([1, 10, 3, 7, 5], 15));
 };
