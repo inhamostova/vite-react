@@ -188,31 +188,92 @@ export const RepeatingJS = () => {
 
   //   console.log(findMissingNumber([0])); // 1
 
-  function twoSum(arr, target) {
-    // for (let i = 0; i < arr.length; i += 1) {
-    //   for (let j = i + 1; j < arr.length; j += 1) {
-    //     if (arr[i] + arr[j] === target) {
-    //       return [i, j];
-    //     }
-    //   }
-    // }
-    const map = new Map();
+  //   function twoSum(arr, target) {
+  //     // for (let i = 0; i < arr.length; i += 1) {
+  //     //   for (let j = i + 1; j < arr.length; j += 1) {
+  //     //     if (arr[i] + arr[j] === target) {
+  //     //       return [i, j];
+  //     //     }
+  //     //   }
+  //     // }
+  //     const map = new Map();
 
-    for (let i = 0; i < arr.length; i += 1) {
-      if (map.has(target - arr[i])) {
-        return [map.get(target - arr[i]), i];
-      }
-      map.set(arr[i], i);
+  //     for (let i = 0; i < arr.length; i += 1) {
+  //       if (map.has(target - arr[i])) {
+  //         return [map.get(target - arr[i]), i];
+  //       }
+  //       map.set(arr[i], i);
+  //     }
+  //   }
+
+  //   console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+
+  //   console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+
+  //   console.log(twoSum([3, 3], 6)); // [0, 1]
+
+  //   console.log(twoSum([4, 1, 8, 3], 7)); //[0,3]
+
+  //   console.log(twoSum([1, 10, 3, 7, 5], 15));
+
+  //   function groupAnagrams(arr) {
+  //     const map = new Map();
+
+  //     for (let i = 0; i < arr.length; i += 1) {
+  //       const sortedWord = arr[i]
+  //         .split("")
+  //         .sort((a, b) => a.localeCompare(b))
+  //         .join("");
+
+  //       if (map.has(sortedWord)) {
+  //         map.get(sortedWord).push(arr[i]);
+  //         continue;
+  //       }
+  //       map.set(sortedWord, [arr[i]]);
+  //     }
+  //     return [...map.values()];
+  //   }
+
+  //   console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+
+  // [
+  //   ["eat", "tea", "ate"],
+  //   ["tan", "nat"],
+  //   ["bat"]
+  // ]
+
+  function longestConsecutive(arr) {
+    if (arr.length === 0) {
+      return 0;
     }
+    let currentLength = 1;
+    let maxLength = 1;
+    const sortedArr = [...arr].sort((a, b) => a - b);
+
+    for (let i = 1; i < sortedArr.length; i += 1) {
+      if (sortedArr[i] === sortedArr[i - 1] + 1) {
+        currentLength += 1;
+      } else if (sortedArr[i] === sortedArr[i - 1]) {
+        continue;
+      } else {
+        currentLength = 1;
+      }
+      maxLength = maxLength < currentLength ? currentLength : maxLength;
+    }
+
+    return maxLength;
   }
 
-  console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+  console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
+  // 4
+  // Послідовність: 1, 2, 3, 4
+  console.log(longestConsecutive([1, 2, 3, 10, 11, 12, 13]));
 
-  console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+  console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
+  // 9
+  // Послідовність: 0, 1, 2, 3, 4, 5, 6, 7, 8
 
-  console.log(twoSum([3, 3], 6)); // [0, 1]
-
-  console.log(twoSum([4, 1, 8, 3], 7)); //[0,3]
-
-  console.log(twoSum([1, 10, 3, 7, 5], 15));
+  console.log(longestConsecutive([1, 2, 0, 1]));
+  // 3
+  // Послідовність: 0, 1, 2
 };
