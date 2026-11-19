@@ -171,23 +171,15 @@ export const RepeatingJS = () => {
   //   console.log(areAnagrams("ab", "abc")); // false
   //   console.log(areAnagrams("aab", "abb")); // false
   //   console.log(areAnagrams("", ""));
-
   //   function findMissingNumber(arr) {
   //     const sum = (arr.length * (arr.length + 1)) / 2;
-
   //     const total = arr.reduce((acc, item) => acc + item, 0);
-
   //     return sum - total;
   //   }
-
   //   console.log(findMissingNumber([3, 0, 1])); // 2
-
   //   console.log(findMissingNumber([0, 1])); // 2
-
   //   console.log(findMissingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
-
   //   console.log(findMissingNumber([0])); // 1
-
   //   function twoSum(arr, target) {
   //     // for (let i = 0; i < arr.length; i += 1) {
   //     //   for (let j = i + 1; j < arr.length; j += 1) {
@@ -197,7 +189,6 @@ export const RepeatingJS = () => {
   //     //   }
   //     // }
   //     const map = new Map();
-
   //     for (let i = 0; i < arr.length; i += 1) {
   //       if (map.has(target - arr[i])) {
   //         return [map.get(target - arr[i]), i];
@@ -205,26 +196,18 @@ export const RepeatingJS = () => {
   //       map.set(arr[i], i);
   //     }
   //   }
-
   //   console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
-
   //   console.log(twoSum([3, 2, 4], 6)); // [1, 2]
-
   //   console.log(twoSum([3, 3], 6)); // [0, 1]
-
   //   console.log(twoSum([4, 1, 8, 3], 7)); //[0,3]
-
   //   console.log(twoSum([1, 10, 3, 7, 5], 15));
-
   //   function groupAnagrams(arr) {
   //     const map = new Map();
-
   //     for (let i = 0; i < arr.length; i += 1) {
   //       const sortedWord = arr[i]
   //         .split("")
   //         .sort((a, b) => a.localeCompare(b))
   //         .join("");
-
   //       if (map.has(sortedWord)) {
   //         map.get(sortedWord).push(arr[i]);
   //         continue;
@@ -233,47 +216,90 @@ export const RepeatingJS = () => {
   //     }
   //     return [...map.values()];
   //   }
-
   //   console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
-
   // [
   //   ["eat", "tea", "ate"],
   //   ["tan", "nat"],
   //   ["bat"]
   // ]
+  //   function longestConsecutive(arr) {
+  //     if (arr.length === 0) {
+  //       return 0;
+  //     }
+  //     let currentLength = 1;
+  //     let maxLength = 1;
+  //     const sortedArr = [...arr].sort((a, b) => a - b);
+  //     for (let i = 1; i < sortedArr.length; i += 1) {
+  //       if (sortedArr[i] === sortedArr[i - 1] + 1) {
+  //         currentLength += 1;
+  //       } else if (sortedArr[i] === sortedArr[i - 1]) {
+  //         continue;
+  //       } else {
+  //         currentLength = 1;
+  //       }
+  //       maxLength = maxLength < currentLength ? currentLength : maxLength;
+  //     }
+  //     return maxLength;
+  //   }
+  //   console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
+  //   // 4
+  //   // Послідовність: 1, 2, 3, 4
+  //   console.log(longestConsecutive([1, 2, 3, 10, 11, 12, 13]));
+  //   console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
+  //   // 9
+  //   // Послідовність: 0, 1, 2, 3, 4, 5, 6, 7, 8
+  //   console.log(longestConsecutive([1, 2, 0, 1]));
+  //   // 3
+  //   // Послідовність: 0, 1, 2
 
-  function longestConsecutive(arr) {
-    if (arr.length === 0) {
-      return 0;
-    }
-    let currentLength = 1;
-    let maxLength = 1;
-    const sortedArr = [...arr].sort((a, b) => a - b);
+  //   function moveZeros(arr) {
+  //     const map = new Map();
 
-    for (let i = 1; i < sortedArr.length; i += 1) {
-      if (sortedArr[i] === sortedArr[i - 1] + 1) {
-        currentLength += 1;
-      } else if (sortedArr[i] === sortedArr[i - 1]) {
-        continue;
-      } else {
-        currentLength = 1;
+  //     for (let i = 0; i < arr.length; i += 1) {
+  //       if (map.has(0) && arr[i] === 0) {
+  //         map.get(0).push(arr[i]);
+  //       } else if (map.has("other") && arr[i] !== 0) {
+  //         map.get("other").push(arr[i]);
+  //       } else {
+  //         map.set(arr[i] === 0 ? 0 : "other", [arr[i]]);
+  //       }
+  //     }
+
+  //     return [...(map.get("other") ?? []), ...(map.get(0) ?? [])];
+  //   }
+
+  //   function moveZeros(arr) {
+  //     const arr1 = [];
+  //     const arr2 = [];
+
+  //     for (const num of arr) {
+  //       num === 0 ? arr1.push(num) : arr2.push(num);
+  //     }
+  //     return [...arr2, ...arr1];
+  //   }
+
+  function moveZeros(arr) {
+    let j = 0;
+    for (let i = 0; i < arr.length; i += 1) {
+      if (arr[i] !== 0) {
+        arr[j] = arr[i];
+        j += 1;
       }
-      maxLength = maxLength < currentLength ? currentLength : maxLength;
     }
-
-    return maxLength;
+    for (let i = j; i < arr.length; i += 1) {
+      arr[i] = 0;
+    }
+    return arr;
   }
 
-  console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
-  // 4
-  // Послідовність: 1, 2, 3, 4
-  console.log(longestConsecutive([1, 2, 3, 10, 11, 12, 13]));
+  console.log(moveZeros([0, 1, 0, 3, 12]));
+  // [1, 3, 12, 0, 0]
 
-  console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
-  // 9
-  // Послідовність: 0, 1, 2, 3, 4, 5, 6, 7, 8
+  console.log(moveZeros([0, 0, 1]));
+  // [1, 0, 0]
 
-  console.log(longestConsecutive([1, 2, 0, 1]));
-  // 3
-  // Послідовність: 0, 1, 2
+  console.log(moveZeros([1, 2, 3]));
+  // [1, 2, 3]
+  console.log(moveZeros([0, 0, 0]));
+  // [0, 0, 0]
 };
