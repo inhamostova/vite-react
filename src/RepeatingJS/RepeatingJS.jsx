@@ -278,28 +278,57 @@ export const RepeatingJS = () => {
   //     return [...arr2, ...arr1];
   //   }
 
-  function moveZeros(arr) {
-    let j = 0;
-    for (let i = 0; i < arr.length; i += 1) {
-      if (arr[i] !== 0) {
-        arr[j] = arr[i];
-        j += 1;
+  //   function moveZeros(arr) {
+  //     let j = 0;
+  //     for (let i = 0; i < arr.length; i += 1) {
+  //       if (arr[i] !== 0) {
+  //         arr[j] = arr[i];
+  //         j += 1;
+  //       }
+  //     }
+  //     for (let i = j; i < arr.length; i += 1) {
+  //       arr[i] = 0;
+  //     }
+  //     return arr;
+  //   }
+
+  //   console.log(moveZeros([0, 1, 0, 3, 12]));
+  //   // [1, 3, 12, 0, 0]
+
+  //   console.log(moveZeros([0, 0, 1]));
+  //   // [1, 0, 0]
+
+  //   console.log(moveZeros([1, 2, 3]));
+  //   // [1, 2, 3]
+  //   console.log(moveZeros([0, 0, 0]));
+  //   // [0, 0, 0]
+
+  //   function isPalindrome(str) {
+  //     if (str.length === 0) return true;
+  //     const newStr = str.toLowerCase().split("").reverse().join("");
+  //     return newStr === str.toLowerCase();
+  //   }
+
+  function isPalindrome(str) {
+    const normalizedStr = str.toLowerCase();
+    for (
+      let left = 0, right = str.length - 1;
+      left <= right;
+      left += 1, right -= 1
+    ) {
+      if (
+        normalizedStr.toLowerCase()[left] !== normalizedStr.toLowerCase()[right]
+      ) {
+        return false;
       }
     }
-    for (let i = j; i < arr.length; i += 1) {
-      arr[i] = 0;
-    }
-    return arr;
+    return true;
   }
 
-  console.log(moveZeros([0, 1, 0, 3, 12]));
-  // [1, 3, 12, 0, 0]
-
-  console.log(moveZeros([0, 0, 1]));
-  // [1, 0, 0]
-
-  console.log(moveZeros([1, 2, 3]));
-  // [1, 2, 3]
-  console.log(moveZeros([0, 0, 0]));
-  // [0, 0, 0]
+  console.log(isPalindrome("madam")); // true
+  console.log(isPalindrome("racecar")); // true
+  console.log(isPalindrome("hello")); // false
+  console.log(isPalindrome("level")); // true
+  console.log(isPalindrome("LeVvel"));
+  console.log(isPalindrome(""));
 };
