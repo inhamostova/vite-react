@@ -309,26 +309,47 @@ export const RepeatingJS = () => {
   //     return newStr === str.toLowerCase();
   //   }
 
-  function isPalindrome(str) {
-    const normalizedStr = str.toLowerCase();
-    for (
-      let left = 0, right = str.length - 1;
-      left <= right;
-      left += 1, right -= 1
-    ) {
-      if (
-        normalizedStr.toLowerCase()[left] !== normalizedStr.toLowerCase()[right]
-      ) {
-        return false;
+  //   function isPalindrome(str) {
+  //     const normalizedStr = str.toLowerCase();
+  //     for (
+  //       let left = 0, right = str.length - 1;
+  //       left <= right;
+  //       left += 1, right -= 1
+  //     ) {
+  //       if (
+  //         normalizedStr.toLowerCase()[left] !== normalizedStr.toLowerCase()[right]
+  //       ) {
+  //         return false;
+  //       }
+  //     }
+  //     return true;
+  //   }
+
+  //   console.log(isPalindrome("madam")); // true
+  //   console.log(isPalindrome("racecar")); // true
+  //   console.log(isPalindrome("hello")); // false
+  //   console.log(isPalindrome("level")); // true
+  //   console.log(isPalindrome("LeVvel"));
+  //   console.log(isPalindrome(""));
+
+  function intersection(arr1, arr2) {
+    const set = new Set(arr1);
+    const result = new Set();
+
+    for (let i = 0; i < arr2.length; i += 1) {
+      if (set.has(arr2[i])) {
+        result.add(arr2[i]);
       }
     }
-    return true;
+    return [...result];
   }
 
-  console.log(isPalindrome("madam")); // true
-  console.log(isPalindrome("racecar")); // true
-  console.log(isPalindrome("hello")); // false
-  console.log(isPalindrome("level")); // true
-  console.log(isPalindrome("LeVvel"));
-  console.log(isPalindrome(""));
+  console.log(intersection([1, 2, 2, 1], [2, 2]));
+  // [2]
+
+  console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
+  // [9, 4]
+
+  console.log(intersection([1, 2, 3], [4, 5, 6]));
+  // []
 };
