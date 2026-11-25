@@ -332,24 +332,82 @@ export const RepeatingJS = () => {
   //   console.log(isPalindrome("LeVvel"));
   //   console.log(isPalindrome(""));
 
-  function intersection(arr1, arr2) {
-    const set = new Set(arr1);
-    const result = new Set();
+  //   function intersection(arr1, arr2) {
+  //     const set = new Set(arr1);
+  //     const result = new Set();
 
-    for (let i = 0; i < arr2.length; i += 1) {
-      if (set.has(arr2[i])) {
-        result.add(arr2[i]);
+  //     for (let i = 0; i < arr2.length; i += 1) {
+  //       if (set.has(arr2[i])) {
+  //         result.add(arr2[i]);
+  //       }
+  //     }
+  //     return [...result];
+  //   }
+
+  //   console.log(intersection([1, 2, 2, 1], [2, 2]));
+  //   // [2]
+
+  //   console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
+  //   // [9, 4]
+
+  //   console.log(intersection([1, 2, 3], [4, 5, 6]));
+  //   // []
+
+  //   function sameFrequency(num1, num2) {
+  //     const map1 = new Map();
+  //     const map2 = new Map();
+  //     const str1 = String(num1);
+  //     const str2 = String(num2);
+
+  //     if (str1.length !== str2.length) return false;
+
+  //     for (let i = 0; i < str1.length; i += 1) {
+  //       if (map1.has(str1[i])) {
+  //         map1.set(str1[i], map1.get(str1[i]) + 1);
+  //       } else {
+  //         map1.set(str1[i], 1);
+  //       }
+  //       if (map2.has(str2[i])) {
+  //         map2.set(str2[i], map2.get(str2[i]) + 1);
+  //       } else {
+  //         map2.set(str2[i], 1);
+  //       }
+  //     }
+
+  //     for (let i = 0; i < str1.length; i += 1) {
+  //       if (!map2.has(str1[i]) || map2.get(str1[i]) !== map1.get(str1[i])) {
+  //         return false;
+  //       }
+  //     }
+  //     return true;
+  //   }
+  function sameFrequency(num1, num2) {
+    const map = new Map();
+    const str1 = String(num1);
+    const str2 = String(num2);
+
+    if (str1.length !== str2.length) return false;
+
+    for (let i = 0; i < str1.length; i += 1) {
+      if (map.has(str1[i])) {
+        map.set(str1[i], map.get(str1[i]) + 1);
+      } else {
+        map.set(str1[i], 1);
       }
     }
-    return [...result];
+
+    for (let i = 0; i < str2.length; i += 1) {
+      if (!map.has(str2[i]) || map.get(str2[i]) === 0) {
+        return false;
+      }
+      map.set(str2[i], map.get(str2[i]) - 1);
+    }
+
+    return true;
   }
 
-  console.log(intersection([1, 2, 2, 1], [2, 2]));
-  // [2]
-
-  console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
-  // [9, 4]
-
-  console.log(intersection([1, 2, 3], [4, 5, 6]));
-  // []
+  console.log(sameFrequency(182, 281)); // true
+  console.log(sameFrequency(3589578, 5879385)); // true
+  console.log(sameFrequency(34, 14)); // false
+  console.log(sameFrequency(22, 222)); // false
 };
