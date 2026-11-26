@@ -381,33 +381,62 @@ export const RepeatingJS = () => {
   //     }
   //     return true;
   //   }
-  function sameFrequency(num1, num2) {
-    const map = new Map();
-    const str1 = String(num1);
-    const str2 = String(num2);
+  //   function sameFrequency(num1, num2) {
+  //     const map = new Map();
+  //     const str1 = String(num1);
+  //     const str2 = String(num2);
 
-    if (str1.length !== str2.length) return false;
+  //     if (str1.length !== str2.length) return false;
 
-    for (let i = 0; i < str1.length; i += 1) {
-      if (map.has(str1[i])) {
-        map.set(str1[i], map.get(str1[i]) + 1);
-      } else {
-        map.set(str1[i], 1);
-      }
-    }
+  //     for (let i = 0; i < str1.length; i += 1) {
+  //       if (map.has(str1[i])) {
+  //         map.set(str1[i], map.get(str1[i]) + 1);
+  //       } else {
+  //         map.set(str1[i], 1);
+  //       }
+  //     }
 
-    for (let i = 0; i < str2.length; i += 1) {
-      if (!map.has(str2[i]) || map.get(str2[i]) === 0) {
+  //     for (let i = 0; i < str2.length; i += 1) {
+  //       if (!map.has(str2[i]) || map.get(str2[i]) === 0) {
+  //         return false;
+  //       }
+  //       map.set(str2[i], map.get(str2[i]) - 1);
+  //     }
+
+  //     return true;
+  //   }
+
+  //   console.log(sameFrequency(182, 281)); // true
+  //   console.log(sameFrequency(3589578, 5879385)); // true
+  //   console.log(sameFrequency(34, 14)); // false
+  //   console.log(sameFrequency(22, 222)); // false
+
+  function isIsomorphic(s, t) {
+    const map1 = new Map();
+    const map2 = new Map();
+
+    if (s.length !== t.length) return false;
+
+    for (let i = 0; i < s.length; i += 1) {
+      if (map1.has(s[i]) && map1.get(s[i]) !== t[i]) {
         return false;
+      } else {
+        map1.set(s[i], t[i]);
       }
-      map.set(str2[i], map.get(str2[i]) - 1);
+
+      if (map2.has(t[i]) && map2.get(t[i]) !== s[i]) {
+        return false;
+      } else {
+        map2.set(t[i], s[i]);
+      }
     }
 
     return true;
   }
 
-  console.log(sameFrequency(182, 281)); // true
-  console.log(sameFrequency(3589578, 5879385)); // true
-  console.log(sameFrequency(34, 14)); // false
-  console.log(sameFrequency(22, 222)); // false
+  console.log(isIsomorphic("ab", "cc")); // false
+  console.log(isIsomorphic("egg", "add")); // true
+  console.log(isIsomorphic("foo", "bar")); // false
+  console.log(isIsomorphic("paper", "title")); // true
+  console.log(isIsomorphic("badc", "baba")); // false
 };
