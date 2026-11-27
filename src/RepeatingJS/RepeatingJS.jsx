@@ -411,32 +411,66 @@ export const RepeatingJS = () => {
   //   console.log(sameFrequency(34, 14)); // false
   //   console.log(sameFrequency(22, 222)); // false
 
-  function isIsomorphic(s, t) {
-    const map1 = new Map();
-    const map2 = new Map();
+  //   function isIsomorphic(s, t) {
+  //     const map1 = new Map();
+  //     const map2 = new Map();
 
-    if (s.length !== t.length) return false;
+  //     if (s.length !== t.length) return false;
 
-    for (let i = 0; i < s.length; i += 1) {
-      if (map1.has(s[i]) && map1.get(s[i]) !== t[i]) {
-        return false;
-      } else {
-        map1.set(s[i], t[i]);
-      }
+  //     for (let i = 0; i < s.length; i += 1) {
+  //       if (map1.has(s[i]) && map1.get(s[i]) !== t[i]) {
+  //         return false;
+  //       } else {
+  //         map1.set(s[i], t[i]);
+  //       }
 
-      if (map2.has(t[i]) && map2.get(t[i]) !== s[i]) {
-        return false;
-      } else {
-        map2.set(t[i], s[i]);
+  //       if (map2.has(t[i]) && map2.get(t[i]) !== s[i]) {
+  //         return false;
+  //       } else {
+  //         map2.set(t[i], s[i]);
+  //       }
+  //     }
+
+  //     return true;
+  //   }
+
+  //   console.log(isIsomorphic("ab", "cc")); // false
+  //   console.log(isIsomorphic("egg", "add")); // true
+  //   console.log(isIsomorphic("foo", "bar")); // false
+  //   console.log(isIsomorphic("paper", "title")); // true
+  //   console.log(isIsomorphic("badc", "baba")); // false
+
+  function isPalindrome(str) {
+    let newStr = "";
+
+    for (let i = 0; i < str.length; i += 1) {
+      if (
+        str[i].toLowerCase() !== str[i].toUpperCase() ||
+        (!Number.isNaN(Number(str[i])) && str[i] !== " ")
+      ) {
+        newStr += str[i];
       }
     }
+    newStr = newStr.toLowerCase();
 
+    for (
+      let left = 0, rigth = newStr.length - 1;
+      left < rigth;
+      left += 1, rigth -= 1
+    ) {
+      if (newStr[left] !== newStr[rigth]) {
+        return false;
+      }
+    }
     return true;
   }
 
-  console.log(isIsomorphic("ab", "cc")); // false
-  console.log(isIsomorphic("egg", "add")); // true
-  console.log(isIsomorphic("foo", "bar")); // false
-  console.log(isIsomorphic("paper", "title")); // true
-  console.log(isIsomorphic("badc", "baba")); // false
+  console.log(isPalindrome("A man, a plan, a canal: Panama"));
+  // true
+
+  console.log(isPalindrome("race a car"));
+  // false
+
+  console.log(isPalindrome(" 12321"));
+  // true
 };
